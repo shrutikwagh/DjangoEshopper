@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+    {% load static %}
+{%block content%}
+
+
+
+    <!-- Checkout Start -->
+    <div class="container-fluid pt-5 pb-5" style="background: #eee;">
+
+
+<div class="container mt-5">
+        <div class="d-flex justify-content-center row " >
+            <div class="col-md-8">
+                <div class="p-3 bg-white rounded">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1 class="text-uppercase">Invoice</h1>
+                            <div class="my-3"><span class="font-weight-bold text-uppercase text-dark">Billed:</span><label class="form-label ml-3">{{Billing_Details2.first_name}} {{Billing_Details2.last_name}}</label></div>
+                            <div class="my-3"><span class="font-weight-bold text-uppercase text-dark">Date:</span><label class="form-label ml-3">{{formated_date}}</label></div>
+                            <div class="my-3"><span class="font-weight-bold text-uppercase text-dark">Bill ID:</span><label class="form-label ml-3">{{Billing_Details2.bill_id}} </label></div>
+                        </div>
+                        <div class="col-md-6 text-right mt-3">
+                            <h4 class="text-danger mb-0">ESHOPPER</h4></div>
+                    </div>
+                    <div class="mt-3">
+                         <h6 class="font-weight-bold text-uppercase">Address Details</h6>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label class="form-label">Address Line 1</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <label class="form-label">{{Billing_Details2.bill_address_line1}}</label>
+                                    </div>
+                               </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label class="form-label">Address Line 2</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <label class="form-label">{{Billing_Details2.bill_address_line2}}</label>
+                                    </div>
+
+
+                                </div>
+                                 <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label class="form-label">Country</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <label class="form-label">{{Billing_Details2.bill_country}}</label>
+                                    </div>
+
+
+                                </div>
+
+                                 <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label class="form-label">State</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <label class="form-label">{{Billing_Details2.bill_state}}</label>
+                                    </div>
+
+
+                                </div>
+
+                                 <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label class="form-label">City</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <label class="form-label">{{Billing_Details2.bill_city}}</label>
+                                    </div>
+
+
+                                </div>
+
+                                 <div class="form-group row">
+                                    <div class="col-sm-4">
+                                        <label class="form-label">Pincode</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <label class="form-label">{{Billing_Details2.bill_pincode}}</label>
+                                    </div>
+
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                        <div class="mt-3">
+                        <div class="table-responsive">
+                            <table class="table">
+
+
+
+                                <thead>
+                                    <tr>
+                                        <th class="font-weight-bold text-dark">Product</th>
+                                        <th class="font-weight-bold text-dark">Unit</th>
+                                        <th class="font-weight-bold text-dark">Price</th>
+                                        <th class="font-weight-bold text-dark">Shipping Price</th>
+                                        <th class="font-weight-bold text-dark">Sub Total</th>
+                                        <th class="font-weight-bold text-dark">Total</th>
+                                    </tr>
+                                <tr></tr>
+                                </thead>
+                                <tbody>
+                                {%for i in Order_Details1%}
+
+                                    <tr>
+                                        <td>{{i.PRODUCT_NAME}}</td>
+                                        <td>{{i.quantity}}</td>
+                                        <td>{{i.product_price}}</td>
+                                        <td>{{i.shipping_charges}}</td>
+                                        <td>{{i.sub_total_price}}</td>
+                                        <td>{{i.SHIP_TOTAL}}</td>
+
+                                    </tr>
+
+
+
+                                {%endfor%}
+                                <tr>
+                                    <th>Total</th>
+                                    <th>{{TOTAL_QUANTITY}}</th>
+                                    <th>{{SUB_TOTAL_PRICE}}</th>
+                                    <th>{{shipping_charges}}</th>
+                                    <th>{{total_price}}</th>
+                                    <th>{{total_price1}}</th>
+
+                                </tr>
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <!-- Checkout End -->
+
+
+{%endblock%}

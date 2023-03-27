@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+    {% load static %}
+{%block content%}
+
+
+
+    <!-- Checkout Start -->
+    <div class="container-fluid pt-5">
+        <form method="post">
+            {% csrf_token %}
+
+        <div class="row px-xl-5">
+
+
+
+            <div class="col-lg-6">
+                <div class="mb-4">
+                    <h4 class="font-weight-semi-bold mb-4">Billing Address</h4>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>First Name</label>
+                            <input class="form-control" type="text" placeholder="" value="{{Customer_details.first_name}}" name="first_name">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Last Name</label>
+                            <input class="form-control" type="text" placeholder="Doe" value="{{Customer_details.last_name}}"  name="last_name">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>E-mail</label>
+                            <input class="form-control" type="text" placeholder="example@email.com" value="{{Customer_details.email}}"  name="email">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Mobile No</label>
+                            <input class="form-control" type="text" placeholder="+123 456 789"  name="phone" value="{{Customer_details.phone}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Address Line 1</label>
+                            <input class="form-control" type="text" placeholder="123 Street"  name="bill_address_line1"  value="{{Billing_Details2.bill_address_line1}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Address Line 2</label>
+                            <input class="form-control" type="text" placeholder="123 Street"   name="bill_address_line2"  value="{{Billing_Details2.bill_address_line2}}">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Country</label>
+                            <input type="text" class="form-control"   name="bill_Country" value="{%if Billing_Details2.bill_country %}{{Billing_Details2.bill_country}}{%else%}{%endif%}" >
+
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>City</label>
+                            <input class="form-control" type="text" placeholder="New York"   name="bill_city" value="{%if Billing_Details2.bill_city %}{{Billing_Details2.bill_city}}{%else%}{%endif%}" >
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>State</label>
+                            <input class="form-control" type="text" placeholder="New York" name="bill_State"
+                                   value="{%if Billing_Details2.bill_state %}{{Billing_Details2.bill_state}}{%else%}{%endif%}" >
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Pincode</label>
+                            <input class="form-control" type="text" placeholder="123" name="bill_Pincode"
+                             value="{%if Billing_Details2.bill_pincode %}{{Billing_Details2.bill_pincode}}{%else%}{%endif%}"
+                            >
+                        </div>
+                        <!--
+
+                        <div class="col-md-12 form-group">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="shipto"
+
+                                >
+                                <label class="custom-control-label" for="shipto"  data-toggle="collapse" data-target="#shipping-address">Ship to different address</label>
+                            </div>
+                        </div>
+                        -->
+
+
+                    </div>
+                </div>
+
+
+<!--
+                <div class="collapse mb-4" id="shipping-address">
+                    <h4 class="font-weight-semi-bold mb-4">Shipping Address</h4>
+                    <div class="row">
+
+                        <div class="col-md-6 form-group">
+                            <label>E-mail</label>
+                            <input class="form-control" type="text" placeholder="example@email.com"
+                                   value="{%if Billing_Details2.shipp_email %}{{Billing_Details2.shipp_email}}{%else%}{%endif%}"
+                                   name="shipp_email">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Mobile No</label>
+                            <input class="form-control" type="text" placeholder="+123 456 789"  name="shipp_phone"
+                            value="{%if Billing_Details2.shipp_phone %}{{Billing_Details2.shipp_phone}}{%else%}{%endif%}" >
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Address Line 1</label>
+                            <input class="form-control" type="text" name="shipp_address_line1" placeholder="123 Street"
+                             value="{%if Billing_Details2.shipp_address_line1 %}{{Billing_Details2.shipp_address_line1}}{%else%}{%endif%}"
+                            >
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Address Line 2</label>
+                            <input class="form-control" type="text" placeholder="123 Street" name="shipp_address_line2"
+                             value="{%if Billing_Details2.shipp_address_line2 %}{{Billing_Details2.shipp_address_line2}}{%else%}{%endif%}"
+                            >
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Country</label>
+                            <input type="text" class="form-control"   name="shipp_Country"
+                                   value="{%if Billing_Details2.shipp_country %}{{Billing_Details2.shipp_country}}{%else%}{%endif%}">
+
+
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>City</label>
+                            <input class="form-control" type="text" placeholder="New York"  name="shipp_City"
+                               value="{%if Billing_Details2.shipp_city %}{{Billing_Details2.shipp_city}}{%else%}{%endif%}"
+                            >
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>State</label>
+                            <input class="form-control" type="text" placeholder="New York"   name="shipp_State"
+                            value="{%if Billing_Details2.shipp_state %}{{Billing_Details2.shipp_state}}{%else%}{%endif%}"
+                            >
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Pincode</label>
+                            <input class="form-control" type="text" placeholder="123"   name="shipp_Pincode"
+                            value="{%if Billing_Details2.shipp_pincode %}{{Billing_Details2.shipp_pincode}}{%else%}{%endif%}"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+-->
+
+            </div>
+            <div class="col-lg-6">
+                <div class="card border-secondary mb-5">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">Order Total</h4>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="font-weight-medium mb-3">Products</h5>
+
+                        <div class="d-flex justify-content-between">
+
+<!--                            <p>{{j}}</p>-->
+<!--                            <p>{{i}}</p>-->
+
+                            <table class="table table-sm">
+                                <thead>
+                                <th>Name</th>
+                                <th>Price | Quantity</th>
+                                <th>Price</th>
+                                </thead>
+                                <tbody>
+                                {%for i in Cart_items %}
+                                <tr>
+                                    <td>{{i.product_name}}</td>
+                                    <td>{{i.price}} X {{i.quantity}}</td>
+                                    <td>{{i.total_price}}</td>
+                                </tr>
+                                {%endfor%}
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+
+
+                        <hr class="mt-0">
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Subtotal</h6>
+                            <h6 class="font-weight-medium">{{subtotal}}.Rs</h6>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-medium">Shipping</h6>
+                            <h6 class="font-weight-medium">100.Rs</h6>
+                        </div>
+                    </div>
+                    <div class="card-footer border-secondary bg-transparent">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5 class="font-weight-bold">Total</h5>
+                            <h5 class="font-weight-bold">{{total}}.Rs</h5>
+                        </div>
+                    </div>                    <div class="card-footer border-secondary bg-transparent">
+                        <div class="d-flex justify-content-between mt-2">
+
+                            <a href="/view_bill/{{order_id}}" class="btn  btn-success">View Invoice</a>
+
+
+                        </div>
+                    </div>
+                </div>
+                {%if billing_id %}{%else%}
+                <div class="card border-secondary mb-5">
+                    <div class="card-footer border-secondary bg-transparent form-group">
+                        <input name="submit" class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" type="submit" value="Place Order" id="place_order_btn">
+                    </div>
+                </div>
+                {%endif%}
+            </div>
+
+
+        </div>
+            </form>
+    </div>
+    <!-- Checkout End -->
+
+
+{%endblock%}

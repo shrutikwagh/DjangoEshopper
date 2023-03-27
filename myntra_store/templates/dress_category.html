@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+    {% load static %}
+{%block content%}
+
+    <div class="row ">
+   {%for i in productdetails1%}
+    <div class="col-md-4 col-xs-12 col-sm-6 mt-5 mb-5">
+
+
+        <div class="card" style="width: 18rem;">
+  <img src="{{i.image.url}}" class="card-img-top" alt="{{i.image.url}}" height="400" width="100">
+  <div class="card-body" style="height:100px;">
+    <h5 class="card-title">{{i.product_name}}</h5>
+    <p class="card-text">{{i.price}} Rs</p>
+  </div>
+
+  <div class="card-body justify-content-center">
+
+<button data-action="add" data-product="{{i.product_id}}" class="btn btn-primary  border-0 update_cart" type="button">Add </button>
+<button data-action="remove" data-product="{{i.product_id}}" class="btn btn-primary  border-0 update_cart" type="button">Remove</button>
+
+
+
+  </div>
+</div>
+
+    </div>
+       {%endfor%}
+</div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.2/dist/sweetalert2.all.min.js"></script>
+
+
+
+{%endblock%}
